@@ -1,5 +1,7 @@
 # MacDisplaySync
 
+[![Build](https://github.com/axberg/MacDisplaySync/actions/workflows/build.yml/badge.svg)](https://github.com/axberg/MacDisplaySync/actions/workflows/build.yml)
+
 A small, native macOS menu-bar controller for DDC/CI displays on Apple Silicon.
 It changes the monitor's hardware settings rather than applying a dimming overlay.
 
@@ -31,12 +33,13 @@ Brightness is sampled every two seconds and only writes when the rounded hardwar
 level changes. Color warmth follows Night Shift's live state using the monitor's
 5000 K preset, then restores the preset that was active when follow mode was enabled.
 
-## Build and install
+## Install from source
 
 Xcode Command Line Tools or a full Xcode installation is required.
 
 ```sh
-make build
+git clone https://github.com/axberg/MacDisplaySync.git
+cd MacDisplaySync
 make install
 ```
 
@@ -44,10 +47,10 @@ The build produces `build/MacDisplaySync.app`. The install script copies it to
 `/Applications` and opens it. No network access, analytics, or elevated privileges
 are used.
 
+To compile without installing:
+
 ```sh
-git clone https://github.com/axberg/MacDisplaySync.git
-cd MacDisplaySync
-make install
+make build
 ```
 
 ## Compatibility
@@ -74,6 +77,7 @@ make clean
 The checks never write monitor settings. Hardware writes should be tested by moving
 a value by one step, reading it back, and restoring the original value immediately.
 See [CONTRIBUTING.md](CONTRIBUTING.md) and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+Maintainers can use the checklist in [RELEASING.md](RELEASING.md).
 
 ## Safety
 
